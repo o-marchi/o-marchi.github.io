@@ -1,0 +1,42 @@
+body {
+	font-family: 'LatoWeb';
+}
+
+h1 {
+	font-family: 'LatoWebThin';
+	font-size: 40px;
+	margin: 90px 0;
+}
+
+h1 em {
+	font-family: 'LatoWebBlack';
+	font-style: normal;
+	font-size: 50px;
+}
+
+.container {
+	text-align: center;
+}
+
+.main-line {
+	font-size: 40px;
+	margin: 0 0 90px;
+}
+
+.main-line p,
+.main-line .language-magic {
+	display: inline;
+}
+
+.language-magic-wrap {
+	background: #322931;
+	display: inline;
+	color: #fff;
+	display: inline;
+	padding: 14px;
+}
+
+.language-javascript { color: #FFE599; }
+.language-ruby { color: #F99D83; }
+.language-php { color: #ABE0E5; }
+.language-lisp { color: #E599FF; }
