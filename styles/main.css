@@ -23,7 +23,7 @@ h1 em {
 	margin: 0 0 90px;
 }
 
-.main-line p,
+.main-line-p,
 .main-line .language-magic {
 	display: inline;
 }
@@ -65,4 +65,11 @@ pre {
 .code pre {
 	max-width: 600px;
 	margin: 0 auto;
+}
+
+@media (max-width:700px) {
+	.main-line-p {
+		display: block;
+		margin-bottom: 20px;
+	}
 }
