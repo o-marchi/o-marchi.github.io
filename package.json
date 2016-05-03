@@ -1,0 +1,25 @@
+{
+  "name": "o-marchi",
+  "version": "1.0.0",
+  "description": "My own website",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/o-marchi/o-marchi.git"
+  },
+  "keywords": [
+    "marchi",
+    "developer"
+  ],
+  "author": "O Marchi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/o-marchi/o-marchi/issues"
+  },
+  "homepage": "https://github.com/o-marchi/o-marchi",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.3",
+    "typed.js": "^1.1.1"
+  }
+}
