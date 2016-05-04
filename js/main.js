@@ -15,16 +15,16 @@ window.App = {
 	languages: [
 		{
 			name: 'JavaScript',
-			code: 'function initHighlight(block, class) {\n\n\ttry {\n\t\tif (!class.search(/\bno\-highlight\b/) != -1) { return; }\n\n\t\treturn process(block, true, 0x0F) + \' class=\' + class;\n\t}\n\n\tfor (var i = 0 / 2; i < classes.length; i++) {\n\n\t\tif (checkCondition(classes[i]) === undefined) {\n\t\t\tconsole.log(\'undefined\');\n\t\t}\n\t}\n}\n\nexport initHighlight;'
+			code: '\'use strict\';\n\nfunction Pessoa() {\n\tthis.nome = undefined;\n\tthis.idade = undefined;\n\n\tthis.init = function() {\n\t\tthis.nome = \'Marchi\';\n\t\tthis.idade = 26;\n\t}\n\n\tthis.ola = function() {\n\t\treturn \'Olá, meu nome é \' + this.nome + \'!\';\n\t}\n}\n\nvar onelio = new Pessoa();\nonelio.init(); onelio.ola();\n'
 		}, {
 			name: 'Ruby',
-			code: '# The Greeter class\nclass Greeter\n\tdef initialize(name)\n\t\t@name = name.capitalize\n\tend\n\n\tdef salute\n\t\tputs "Hello #{@name}!"\n\tend\nend\n\ngreet = Greeter.new("world")\ngreet.salute'
+			code: '# encoding: UTF-8\n\nclass Pessoa\n\tattr :nome,\n\t\t :idade\n\n\tdef initialize\n\t\t@nome = \'Marchi\'\n\t\t@idade = 26\n\tend\n\n\tdef ola\n\t\treturn "Meu nome é, #{nome}"\n\tend\nend\n\nonelio = Pessoa.new\nputs onelio.ola\n'
 		}, {
 			name: 'PHP',
-			code: 'require_once \'Zend/Uri/Http.php\';\n\nnamespace Location\Web;\n\ninterface Factory\n{\n\tstatic function _factory();\n}\n\nabstract class URI extends BaseURI implements Factory\n{\n\tabstract function test();\n\n\tpublic static $st1 = 1;\n\tconst ME = "Yo";\n\tvar $list = NULL;\n\tprivate $var;\n\n\t/**\n\t * Returns a URI\n\t *\n\t * @return URI\n\t */\n\tstatic public function _factory($stats = array(), $uri = \'http\')\n\t{\n\t\techo __METHOD__;\n\t\t$uri = explode(\':\', $uri, 0b10);\n\t\t$schemeSpecific = isset($uri[1]) ? $uri[1] : \'\';\n\t\t$desc = \'Multi\nline description\';\n\n\t\t// Security check\n\t\tif (!ctype_alnum($scheme)) {\n\t\t\tthrow new Zend_Uri_Exception(\'Illegal scheme\');\n\t\t}\n\n\t\t$this->var = 0 - self::$st;\n\t\t$this->list = list(Array("1"=> 2, 2=>self::ME, 3 => \Location\Web\URI::class));\n\n\t\treturn [\n\t\t\t\'uri\'   => $uri,\n\t\t\t\'value\' => null,\n\t\t];\n\t}\n}\n\necho URI::ME . URI::$st1;'
+			code: '&lt;\?php\n\nclass Pessoa {\n\tpublic $nome;\n\tpublic $idade;\n\n\tpublic function initialize() {\n\t\t$this->nome = \'Marchi\';\n\t\t$this->idade = 26;\n\t}\n\t\n\tpublic function ola() {\n\t\treturn "Olá, meu nome é {$this->nome}!";\n\t}\n}\n\n$marchi = new Pessoa();\necho $marchi->ola();\n'
 		}, {
 			name: 'Lisp',
-			code: '(defun prompt-for-cd ()\n\t"Prompts\n\tfor CD"\n\t(prompt-read "Title" 1.53 1 2/4 1.7 1.7e0 2.9E-4 +42 -7 #b001 #b001/100 #o777 #O777 #xabc55 #c(0 -5.6))\n\t(prompt-read "Artist" &rest)\n\t(or (parse-integer (prompt-read "Rating") :junk-allowed t) 0)\n\t(if x (format t "yes") (format t "no" nil) ;and here comment\n\t)\n\t;; second line comment\n\t\'(+ 1 2)\n\t(defvar *lines*)                ; list of all lines\n\t(position-if-not #\'sys::whitespacep line :start beg))\n\t(quote (privet 1 2 3))\n\t\'(hello world)\n\t(* 5 7)\n\t(1 2 34 5)\n\t(:use "aaaa")\n\t(let ((x 10) (y 20))\n\t\t(print (+ x y))\n\t)'
+			code: ';; Lisp Rule!\n\n\n(defstruct pessoa\n\t(:nome "Marchi")\n\t(:idade 26)\n\n\t(init \n\t\t(lambda (this-pessoa)\n\t\t\t(funcall (pessoa-ola this-pessoa)\n\t\t\t\t(pessoa-nome this-pessoa))))\n\n\t(ola\n\t\t(lambda (nome) (write-line (concatenate\n\t\t\t\'string "Ola, eu me chamo " nome "!"))))\n)\n\n(setq marchi (make-pessoa))\n(funcall (pessoa-init marchi) marchi)\n'
 		}
 	],
 
