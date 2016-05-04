@@ -24,7 +24,7 @@ window.App = {
 			code: '&lt;\?php\n\nclass Pessoa {\n\tpublic $nome;\n\tpublic $idade;\n\n\tpublic function initialize() {\n\t\t$this->nome = \'Marchi\';\n\t\t$this->idade = 26;\n\t}\n\t\n\tpublic function ola() {\n\t\treturn "Olá, meu nome é {$this->nome}!";\n\t}\n}\n\n$marchi = new Pessoa();\necho $marchi->ola();\n'
 		}, {
 			name: 'Lisp',
-			code: ';; Lisp Rule!\n\n\n(defstruct pessoa\n\t(:nome "Marchi")\n\t(:idade 26)\n\n\t(init \n\t\t(lambda (this-pessoa)\n\t\t\t(funcall (pessoa-ola this-pessoa)\n\t\t\t\t(pessoa-nome this-pessoa))))\n\n\t(ola\n\t\t(lambda (nome) (write-line (concatenate\n\t\t\t\'string "Ola, eu me chamo " nome "!"))))\n)\n\n(setq marchi (make-pessoa))\n(funcall (pessoa-init marchi) marchi)\n'
+			code: ';; Lisp Rule!\n\n(defstruct pessoa\n\t(:nome "Marchi")\n\t(:idade 26)\n\n\t(init \n\t\t(lambda (this-pessoa)\n\t\t\t(funcall (pessoa-ola this-pessoa)\n\t\t\t\t(pessoa-nome this-pessoa))))\n\n\t(ola\n\t\t(lambda (nome) (write-line (concatenate\n\t\t\t\'string "Ola, eu me chamo " nome "!"))))\n)\n\n(setq marchi (make-pessoa))\n(funcall (pessoa-init marchi) marchi)\n'
 		}
 	],
 
