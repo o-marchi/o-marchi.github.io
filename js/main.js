@@ -16,16 +16,16 @@ window.App = {
 	languages: [
 		{
 			name: 'JavaScript',
-			code: '\'use strict\';\n\nfunction Pessoa() {\n\tthis.name = undefined;\n\tthis.age = undefined;\n\n\tthis.init = function() {\n\t\tthis.name = \'Marchi\';\n\t\tthis.age = 26;\n\t}\n\n\tthis.hello = function() {\n\t\treturn \'Hello, my name is \' + this.name + \'!\';\n\t}\n}\n\nvar marchi = new Pessoa();\nmarchi.init(); marchi.hello();\n'
+			code: '\'use strict\';\n\nfunction Person() {\n\tthis.name = undefined;\n\tthis.age = undefined;\n\n\tthis.init = function() {\n\t\tthis.name = \'Marchi\';\n\t\tthis.age = 26;\n\t}\n\n\tthis.hello = function() {\n\t\treturn \'Hello, my name is \' + this.name + \'!\';\n\t}\n}\n\nvar marchi = new Person();\nmarchi.init(); marchi.hello();\n'
 		}, {
 			name: 'Ruby',
-			code: '# encoding: UTF-8\n\nclass Pessoa\n\tattr :name,\n\t\t :age\n\n\tdef initialize\n\t\t@name = \'Marchi\'\n\t\t@age = 26\n\tend\n\n\tdef hello\n\t\treturn "Hello, my name is #{name}!"\n\tend\nend\n\nmarchi = Pessoa.new\nputs marchi.hello\n'
+			code: '# encoding: UTF-8\n\nclass Person\n\tattr :name,\n\t\t :age\n\n\tdef initialize\n\t\t@name = \'Marchi\'\n\t\t@age = 26\n\tend\n\n\tdef hello\n\t\treturn "Hello, my name is #{name}!"\n\tend\nend\n\nmarchi = Person.new\nputs marchi.hello\n'
 		}, {
 			name: 'PHP',
-			code: '&lt;\?php\n\nclass Pessoa {\n\tpublic $name;\n\tpublic $age;\n\n\tpublic function initialize() {\n\t\t$this->name = \'Marchi\';\n\t\t$this->age = 26;\n\t}\n\t\n\tpublic function hello() {\n\t\treturn "Hello, my name is {$this->name}!";\n\t}\n}\n\n$marchi = new Pessoa();\necho $marchi->hello();\n'
+			code: '&lt;\?php\n\nclass Person {\n\tpublic $name;\n\tpublic $age;\n\n\tpublic function initialize() {\n\t\t$this->name = \'Marchi\';\n\t\t$this->age = 26;\n\t}\n\t\n\tpublic function hello() {\n\t\treturn "Hello, my name is {$this->name}!";\n\t}\n}\n\n$marchi = new Person();\necho $marchi->hello();\n'
 		}, {
 			name: 'Lisp',
-			code: ';; Lisp Rule!\n\n(defstruct pessoa\n\t(:name "Marchi")\n\t(:age 26)\n\n\t(init \n\t\t(lambda (this-pessoa)\n\t\t\t(funcall (pessoa-hello this-pessoa)\n\t\t\t\t(pessoa-name this-pessoa))))\n\n\t(hello\n\t\t(lambda (name) (write-line (concatenate\n\t\t\t\'string "Hello, my name is " name "!"))))\n)\n\n(setq marchi (make-pessoa))\n(funcall (pessoa-init marchi) marchi)\n'
+			code: ';; Lisp Rule!\n\n(defstruct person\n\t(:name "Marchi")\n\t(:age 26)\n\n\t(init \n\t\t(lambda (this-person)\n\t\t\t(funcall (person-hello this-person)\n\t\t\t\t(person-name this-person))))\n\n\t(hello\n\t\t(lambda (name) (write-line (concatenate\n\t\t\t\'string "Hello, my name is " name "!"))))\n)\n\n(setq marchi (make-person))\n(funcall (person-init marchi) marchi)\n'
 		}
 	],
 
