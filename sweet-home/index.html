@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sweet Home</title>
+	<style>
+		* { margin: 0; }
+
+		html, body {
+			height: 100%,
+			font-family: cursive;
+			cursor: crosshair;
+		}
+
+		#c {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			height: 400px;
+			width: 600px;
+			cursor: crosshair;
+			bottom: 130px;
+			left: 50%;
+			margin: 0 0 0 -300px;
+			position: absolute;
+		}
+
+		#background {
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- canvas -->
+	<canvas id="background"></canvas>
+	<canvas id="c"></canvas>
+
+	<!-- scripts -->
+	<script src="objects.js"></script>
+	<script src="main.js"></script>
+	
+</body>
+</html>
