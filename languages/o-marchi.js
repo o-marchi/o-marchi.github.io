@@ -1,18 +1,19 @@
-'use strict';
-
-function Pessoa() {
-	this.nome = undefined;
-	this.idade = undefined;
-
-	this.init = function() {
-		this.nome = 'Marchi';
-		this.idade = 26;
-	}
-
-	this.ola = function() {
-		return 'Olá, meu nome é ' + this.nome + '!';
-	}
+function random(min, max) {
+	return Math.floor((Math.random() * (max - min + 1) + min));
 }
 
-var onelio = new Pessoa();
-onelio.init(); onelio.ola();
+function crappyWeather () {
+	let conditions = [
+		'sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'snowy', 'foggy'
+	];
+
+	// get random condition
+	return conditions[random(0, conditions.length - 1)];
+}
+
+function newsCast() {
+	return `Hello, today will be a ${crappyWeather()} day out there!`;
+}
+
+newsCast();
+

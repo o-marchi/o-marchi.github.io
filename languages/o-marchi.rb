@@ -1,18 +1,18 @@
-# encoding: UTF-8
+def crappyWeather ()
+	conditions = [
+		'sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'snowy', 'foggy'
+	]
 
-class Pessoa
-	attr :nome,
-	     :idade
-
-	def initialize
-		@nome = 'Marchi'
-		@idade = 26
-	end
-
-	def ola
-		return "Meu nome é, #{nome}"
-	end
+	return conditions[rand(conditions.length)]
 end
 
-onelio = Pessoa.new
-puts onelio.ola
+def newsCast ()
+	return "Hello, today will be a #{crappyWeather()} day out there!"
+end
+
+puts newsCast()
+	
+	
+	
+	
+	

@@ -1,28 +1,54 @@
 body {
-	font-family: 'LatoWeb', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	font-family: 'Titillium Web', 'Droid Sans', 'Kreon', 'LatoWeb', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 }
 
 h1 {
-	font-family: 'LatoWebThin', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-	font-size: 40px;
-	margin: 70px 0;
+	/* font-family: 'LatoWebThin', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; */
+	/* font-size: 40px; */
+	font-size: 50px;
+	margin: 70px 0 50px;
 	font-style: normal;
+	color: #000;
 }
 
 h1 em {
-	font-family: 'LatoWebBlack', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	/* font-family: 'LatoWebBlack', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; */
 	font-style: normal;
-	font-size: 50px;
-	font-style: bold;
+	/* font-style: bold; */
 }
 
 .container {
 	text-align: center;
 }
 
+.container-800 {
+	text-align: center;
+	margin: 0 auto;
+	width: 800px;
+	position: relative;
+}
+
+.pause-continue {
+    background: rgba(0, 0, 0, 0.7);
+    font-size: 12px;
+    color: #f3f2f2;
+    display: inline-block;
+    padding: 8px 22px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.pause-continue:hover {
+    background: #000;
+}
+
 .main-line {
 	font-size: 40px;
-	margin: 0 0 90px;
+	margin: 30px 0 90px;
 }
 
 .main-line-p,
@@ -31,37 +57,56 @@ h1 em {
 }
 
 .language-magic-wrap {
-	background: #1d1f21;
+	background: #151315;
 	display: inline;
 	color: #fff;
-	display: inline;
-	padding: 14px;
+	display: inline-block;
+	padding: 14px 25px;
+	border-radius: 6px;
 }
 
 .language-javascript { color: #FFE599; }
 .language-ruby { color: #F99D83; }
 .language-php { color: #ABE0E5; }
 .language-lisp { color: #E599FF; }
+.language-elm { color: #ABE0E5; }
 
-
+.sun {
+	height: 26px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-image: url('../images/sun.png');
+	width: 100%;
+}
 
 pre {
     display: block;
     padding: 0;
     margin: 0;
-    font-size: 18px;
-    line-height: 1.42857143;
+    font-size: 15px;
+    line-height: 1.6;
     word-break: break-all;
     word-wrap: break-word;
-    background-color: #f5f5f5;
     border: none;
-    border-radius: 4px;
+	letter-spacing: -0.7px;
 }
 
 .code {
-	background: #1d1f21;
+	margin-top: -50px;
+	/* background: #282829; */
 	padding: 30px 0;
-	overflow: auto;
+	position: relative;
+	height: 517px;
+}
+
+.code, .hljs {
+	background: #151315;
+}
+
+.planet {
+	position: absolute;
+	top: -63px;
+	right: 0;
 }
 
 .code pre {
@@ -69,6 +114,96 @@ pre {
 	margin: 0 auto;
 	word-break: keep-all;
     word-wrap: normal;
+	overflow: auto;
+	height: 447px;
+}
+
+.code pre::-webkit-scrollbar { width: 5px; height: 5px; }
+.code pre::-webkit-scrollbar-thumb { background: #888; }
+.core pre::-webkit-scrollbar-track { background: #888; }
+
+.top-header {
+	background: #381e27;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	padding: 10px 0;
+}
+
+.top-header p { padding: 0; margin: 0; }
+
+.color0 { color: #381e27; }
+.color1 { color: #693B4B; }
+.color2 { color: #B44846; }
+.color3 { color: #FD6051; }
+.color4 { color: #FE9150; }
+.color5 { color: #FEA94F; }
+
+.divider:before {
+	content: "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+}
+
+.divider {
+	font-size: 26px;
+	letter-spacing: 4px;
+	margin: 60px auto;
+	height: 37px;
+	overflow: hidden;
+}
+
+.margin0auto {
+	margin: 0 auto !important;
+}
+
+.description {
+	margin: -20px auto 60px;
+	width: 100%;
+	padding: 0 20px;
+	max-width: 680px;
+	font-size: 20px;
+	color: #4F4F4F;
+}
+
+.last-description {
+	color: #999;
+	margin: 100px auto 150px;
+}
+
+.container {
+	max-width: 800px;
+}
+
+.portfolio img { max-width: 100%; }
+
+.portfolio p {
+	color: #666;
+	margin: 10px;
+}
+
+.portfolio h4 { margin: 0 0 15px; }
+
+.portfolio h4 small {
+	display: block;
+	font-size: 14px;
+	color: #666;
+	margin-top: 5px;
+}
+
+.timeline {
+	max-width: 100%;
+}
+
+.hidden { display: none; }
+
+.past-job-date {
+	font-size: 14px;
+	color: #555555;
+}
+
+.past-job-position {
+	font-size: 18px;
+	color: #000;
+	font-weight: bold;
 }
 
 .typed-cursor{
@@ -105,4 +240,25 @@ h1 .typed-cursor {
 		display: block;
 		margin-bottom: 20px;
 	}
+}
+
+.contact-info {
+	font-weight: bold;
+	margin: -35px 0 60px;
+}
+
+.contact-info span {
+	margin: 0 10px;
+}
+
+.slick-slider {
+	padding: 0;
+	max-width: 650px;
+	margin: 0 auto;
+}
+
+.slider-app.slick-slider {
+	padding: 0;
+	max-width: 171px;
+	margin: 0 auto;
 }

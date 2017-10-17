@@ -9,23 +9,25 @@ window.App = {
 	elements: {
 		code: undefined,
 		languageMagic: undefined,
-		typedCursor: undefined,
-		title: undefined
+		typedCursor: undefined
 	},
+
+	typed: undefined,
+	isPaused: false,
 
 	languages: [
 		{
 			name: 'JavaScript',
-			code: '\'use strict\';\n\nfunction Person() {\n\tthis.name = undefined;\n\tthis.age = undefined;\n\n\tthis.init = function() {\n\t\tthis.name = \'Marchi\';\n\t\tthis.age = 26;\n\t}\n\n\tthis.hello = function() {\n\t\treturn \'Hello, my name is \' + this.name + \'!\';\n\t}\n}\n\nvar marchi = new Person();\nmarchi.init(); marchi.hello();\n'
-		}, {
-			name: 'Ruby',
-			code: '# encoding: UTF-8\n\nclass Person\n\tattr :name,\n\t\t :age\n\n\tdef initialize\n\t\t@name = \'Marchi\'\n\t\t@age = 26\n\tend\n\n\tdef hello\n\t\treturn "Hello, my name is #{name}!"\n\tend\nend\n\nmarchi = Person.new\nputs marchi.hello\n'
-		}, {
-			name: 'PHP',
-			code: '&lt;\?php\n\nclass Person {\n\tpublic $name;\n\tpublic $age;\n\n\tpublic function initialize() {\n\t\t$this->name = \'Marchi\';\n\t\t$this->age = 26;\n\t}\n\t\n\tpublic function hello() {\n\t\treturn "Hello, my name is {$this->name}!";\n\t}\n}\n\n$marchi = new Person();\necho $marchi->hello();\n'
+			code: "function random(min, max) {\n\treturn Math.floor((Math.random() * (max - min + 1) + min));\n}\n\nfunction crappyWeather () {\n\tlet conditions = [\n\t\t'sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'snowy', 'foggy'\n\t];\n\n\t// get random condition\n\treturn conditions[random(0, conditions.length - 1)];\n}\n\nfunction newsCast() {\n\treturn `Hello, today will be a ${crappyWeather()} day out there!`;\n}\n\nnewsCast();"
 		}, {
 			name: 'Lisp',
-			code: ';; Lisp Rule!\n\n(defstruct person\n\t(:name "Marchi")\n\t(:age 26)\n\n\t(init \n\t\t(lambda (this-person)\n\t\t\t(funcall (person-hello this-person)\n\t\t\t\t(person-name this-person))))\n\n\t(hello\n\t\t(lambda (name) (write-line (concatenate\n\t\t\t\'string "Hello, my name is " name "!"))))\n)\n\n(setq marchi (make-person))\n(funcall (person-init marchi) marchi)\n'
+			code: "(defun crappyweather () \n  (let ((conditions\n          (list \"sunny\" \"rainy\" \"cloudy\" \"windy\" \"stormy\" \"snowy\" \"foggy\")))\n        (nth (random (length conditions)) conditions)))\n\n(defun newscast ()\n  (concatenate 'string \n    \"Hello, today will be a \" (crappyweather) \" day out there!\" ))\n\n(print (newscast))\n"
+		}, {
+			name: 'Elm',
+			code: "type alias Model =\n\t{ news : String, conditions : Array.Array String }\n\ninit : ( Model, Cmd Msg )\ninit =\n\t( { news = \"\"\n\t  , conditions = Array.fromList\n\t  \t[ \"sunny\", \"rainy\", \"cloudy\", \"windy\", \"stormy\", \"snowy\", \"foggy\" ]\n\t  }\n\t, Random.generate GetWeather (Random.int 0 6)\n\t)\n\ntype Msg = GetWeather Int\n\nupdate : Msg -> Model -> ( Model, Cmd Msg )\nupdate msg model =\n\tcase msg of\n\t\tGetWeather index ->\n\t\t\tlet\n\t\t\t\tcondition =\n\t\t\t\t\tcase Array.get index model.conditions of\n\t\t\t\t\t\tJust a -> a\n\t\t\t\t\t\tNothing -> \"\"\n\t\t\tin\n\t\t\t( { model | news = String.concat\n\t\t\t\t[ \"Hello, today will be a \", condition, \" day out there!\" ] }\n\t\t\t , Cmd.none )\n\nsubscriptions : Model -> Sub Msg\nsubscriptions model =\n\tSub.none\n\nview : Model -> Html Msg\nview model =\n\tdiv [] [ text model.news ]\n\nmain =\n\tHtml.program\n\t\t{ init = init\n\t\t  , view = view\n\t\t  , update = update\n\t\t  , subscriptions = subscriptions\n\t\t}\n"
+		}, {
+			name: 'Ruby',
+			code: "def crappyWeather ()\n\tconditions = [\n\t\t'sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'snowy', 'foggy'\n\t]\n\n\treturn conditions[rand(conditions.length)]\nend\n\ndef newsCast ()\n\treturn \"Hello, today will be a #{crappyWeather()} day out there!\"\nend\n\nputs newsCast()\n\t\n\t\n\t\n\t\n\t"
 		}
 	],
 
@@ -34,17 +36,17 @@ window.App = {
 		for (var i = 0; i < this.languages.length; i++) {
 
 			$('<code/>', {
-				class: 'hide code-sample code-' + this.languages[i].name.toLowerCase() + ' ' +
+				class: 'hidden code-sample code-' + this.languages[i].name.toLowerCase() + ' ' +
 					   this.languages[i].name.toLowerCase()
 			})
 			.html(this.languages[i].code)
 			.appendTo(el);
 		}
 
-		$('.code-javascript').removeClass('hide');
+		$('.code-javascript').removeClass('hidden');
 	},
 
-	autoTypedMagic: function(el) {
+	autoTypedMagic: function(className, pauseContinue) {
 
 		var that = this;
 		var languages = [];
@@ -53,12 +55,13 @@ window.App = {
 			languages.push(this.languages[i].name);
 		}
 
-		el.typed({
+		this.typed = new Typed(className, {
 
 			strings: languages,
 			typeSpeed: 100,
+			backSpeed: 50,
 			loop: true,
-			backDelay: 3000,
+			backDelay: 4000,
 
 			preStringTyped: function(index) {
 				var language = languages[index].toLowerCase();
@@ -70,20 +73,25 @@ window.App = {
 			onStringTyped: function(index) {
 				var language = languages[index].toLowerCase();
 
-				$('.code-sample').addClass('hide');
-				$('.code-' + language).removeClass('hide');
+				$('.code-sample').addClass('hidden');
+				$('.code-' + language).removeClass('hidden');
 			}
 		});
-	},
 
-	typeTitle: function(el) {
+		pauseContinue.on('click', function() {
+			that.isPaused = !that.isPaused;
 
-		el.find('.complete-title').typed({
-			strings: ['nélio', '^10000'],
-			typeSpeed: 100,
-			backDelay: 2000,
-			loop: false
-	    });
+			if (that.isPaused) {
+				pauseContinue.text('Continuar');
+			}
+
+			if (!that.isPaused) {
+				pauseContinue.text('Pausar');
+			}
+
+			that.typed.toggle();
+
+		});
 	},
 
 	init: function() {
@@ -93,12 +101,35 @@ window.App = {
 
 		this.elements.code = $('.code').find('pre');
 		this.elements.languageMagic = $('.language-magic');
+		this.elements.pauseContinue = $('.pause-continue');
 		this.elements.title = $('h1');
 
 		this.appendCodeSamples(this.elements.code);
-		this.autoTypedMagic(this.elements.languageMagic);
-		this.typeTitle(this.elements.title);
+		this.autoTypedMagic('.language-magic', this.elements.pauseContinue);
 	}
 };
 
 App.init();
+
+
+$(function () {
+	$('.slider').slick({
+		dots: false,
+		infinite: true,
+		speed: 500,
+		fade: true,
+		cssEase: 'linear',
+		arrows: false,
+		autoplay: true
+	});
+
+    $('.slider-app').slick({
+        dots: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        arrows: false,
+        autoplay: true
+    });
+});

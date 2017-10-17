@@ -1,18 +1,10 @@
-;; Lisp Rule!
+(defun crappyweather () 
+  (let ((conditions
+          (list "sunny" "rainy" "cloudy" "windy" "stormy" "snowy" "foggy")))
+        (nth (random (length conditions)) conditions)))
 
-(defstruct pessoa
-    (:nome "Marchi")
-    (:idade 26)
+(defun newscast ()
+  (concatenate 'string 
+    "Hello, today will be a " (crappyweather) " day out there!" ))
 
-    (init 
-    	(lambda (this-pessoa)
-    		(funcall (pessoa-ola this-pessoa)
-    			(pessoa-nome this-pessoa))))
-
-    (ola
-    	(lambda (nome) (write-line (concatenate
-    		'string "Ola, eu me chamo " nome "!"))))
-)
-    
-(setq marchi (make-pessoa))
-(funcall (pessoa-init marchi) marchi)
+(print (newscast))
