@@ -244,7 +244,7 @@ h1 .typed-cursor {
 
 .contact-info {
 	font-weight: bold;
-	margin: -35px 0 60px;
+	margin: -35px 0 36px;
 }
 
 .contact-info span {
@@ -261,4 +261,23 @@ h1 .typed-cursor {
 	padding: 0;
 	max-width: 171px;
 	margin: 0 auto;
+}
+
+.linkedin-btn {
+    background: #b54b48;
+    color: #fff;
+    margin: 0 0 40px;
+    display: inline-block;
+    padding: 7px 18px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 0 #0000003d;
+    border: 1px solid #ae4d4c3b;
+    font-size: 18px;
+}
+
+.linkedin-btn:hover, .linkedin-btn:focus {
+    background: #99403d;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
 }
