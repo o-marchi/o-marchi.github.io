@@ -19,7 +19,7 @@
   "homepage": "https://github.com/o-marchi/o-marchi",
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "jquery": "^2.2.3",
+    "jquery": "^3.5.0",
     "typed.js": "^1.1.1"
   }
 }
